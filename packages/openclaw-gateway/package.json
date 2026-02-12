@@ -1,0 +1,31 @@
+{
+  "name": "deltecho-openclaw-gateway",
+  "version": "1.0.0",
+  "description": "OpenClaw-inspired gateway control plane for Deltecho Chat",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/gateway/server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "openclaw",
+    "gateway",
+    "deltecho",
+    "ai-assistant",
+    "messaging"
+  ],
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/ws": "^8.5.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "events": "^3.3.0"
+  }
+}
