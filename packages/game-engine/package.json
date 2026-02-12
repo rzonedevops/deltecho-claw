@@ -1,0 +1,28 @@
+{
+  "name": "deltecho-game-engine",
+  "version": "1.0.0",
+  "description": "OpenClaw-inspired game engine integration for Deltecho Chat",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node --test"
+  },
+  "keywords": [
+    "openclaw",
+    "game-engine",
+    "deltecho",
+    "platformer",
+    "ai-gaming"
+  ],
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "events": "^3.3.0"
+  }
+}
