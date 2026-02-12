@@ -1,8 +1,13 @@
-# Deltecho Chat 🌳💬
+# Deltecho-Claw 🌳🦞
 
-**DeltaChat interface with Deep Tree Echo cognitive orchestration**
+**DeltaChat + Deep Tree Echo + OpenClaw Features**
 
-Deltecho Chat combines the secure, decentralized messaging capabilities of DeltaChat with the advanced cognitive architecture of Deep Tree Echo. This integration enables intelligent chat orchestration, context-aware responses, and autonomous conversation management.
+Deltecho-Claw represents an innovative fusion:
+- **Deltecho Chat**: Secure messaging with Deep Tree Echo cognitive architecture
+- **OpenClaw Gateway**: Multi-channel AI assistant control plane inspired by OpenClaw
+- **Game Engine**: AI-enhanced platformer game (future project)
+
+This creates a unique platform where cognitive AI meets personal assistant automation and interactive gaming.
 
 ## Architecture
 
@@ -43,11 +48,50 @@ The Deep Tree Echo integration brings advanced cognitive capabilities to chat in
 
 The DeepTreeEchoBot serves as an AI companion integrated directly into the chat interface, while the AICompanionHub provides a central location for all AI-powered features. The CognitiveBridge creates a seamless connection between chat events and cognitive processing, with the LLM Service supporting multiple backends including OpenAI, Anthropic, and local models.
 
+## Dual Vision
+
+Deltecho-Claw offers **two complementary paths**:
+
+### 🦞 Vision 1: AI Assistant Gateway (Primary Focus)
+Multi-channel AI assistant with OpenClaw-inspired architecture
+- WebSocket control plane for real-time communication
+- Multi-channel support (Telegram, Discord, WhatsApp, DeltaChat, etc.)
+- Extensible skills system (plugins/tools)
+- Session management with conversation context
+- Deep Tree Echo cognitive integration
+
+**Status**: Foundation complete, actively developing
+**Location**: `packages/openclaw-gateway/`
+**Docs**: [OPENCLAW_INTEGRATION.md](OPENCLAW_INTEGRATION.md)
+
+### 🎮 Vision 2: AI-Enhanced Platformer Game (Future Project)
+Intelligent platformer game where AI assists gameplay
+- 2D physics-based game engine
+- AI observes and provides real-time tips
+- Event-driven game state analysis
+- Canvas-based rendering
+- Potential for multiplayer coordination via chat
+
+**Status**: Core engine complete, preserved for future
+**Location**: `packages/game-engine/`
+**Docs**: [GAME_ENGINE.md](GAME_ENGINE.md)
+
+### 🌉 The Convergence
+Both visions can merge into a unified platform where:
+- The game becomes a skill in the gateway
+- AI assists gameplay while you chat with friends
+- Multiplayer coordination happens via messaging
+- Shared achievements and social features
+
+**See**: [DUAL_VISION.md](DUAL_VISION.md) for the complete vision
+
 ## Project Structure
 
 ```
-deltecho-chat/
+deltecho-claw/
 ├── packages/
+│   ├── openclaw-gateway/     # NEW: AI assistant control plane
+│   ├── game-engine/          # NEW: AI-enhanced platformer engine
 │   ├── frontend/           # React-based chat UI
 │   │   └── src/
 │   │       └── components/
