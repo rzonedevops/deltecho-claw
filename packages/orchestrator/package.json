@@ -44,7 +44,8 @@
     "@deltecho/cognitive": "workspace:*",
     "@deltecho/dove9": "workspace:*",
     "@deltecho/ipc": "workspace:*",
-    "@deltecho/sys6-triality": "workspace:*"
+    "@deltecho/sys6-triality": "workspace:*",
+    "deltecho-openclaw-gateway": "workspace:*"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

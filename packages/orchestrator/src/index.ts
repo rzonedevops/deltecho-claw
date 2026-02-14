@@ -137,3 +137,10 @@ export {
   type EmergentIdentity,
   type SelfReflectionState,
 } from "./aar/index.js";
+
+// OpenClaw Gateway Integration - Multi-channel AI assistant control plane
+export {
+  OpenClawIntegration,
+  type OpenClawIntegrationConfig,
+  DEFAULT_OPENCLAW_CONFIG,
+} from "./openclaw-integration.js";

@@ -15,9 +15,9 @@ import type {
   OutboundMessage,
   ChannelAdapter,
   WSMessage,
-  WSMessageType,
   ChannelType,
 } from '../types/index.js'
+import { WSMessageType } from '../types/index.js'
 
 export class GatewayServer extends EventEmitter {
   private config: GatewayConfig

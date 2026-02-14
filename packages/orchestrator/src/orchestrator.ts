@@ -34,6 +34,10 @@ import {
 import { AARSystem, AARConfig, AARProcessingResult } from "./aar/index.js";
 import { IPCMessageType } from "@deltecho/ipc";
 import { registerCognitiveHandlers } from "./ipc/cognitive-handlers.js";
+import {
+  OpenClawIntegration,
+  OpenClawIntegrationConfig,
+} from "./openclaw-integration.js";
 
 const log = getLogger("deep-tree-echo-orchestrator/Orchestrator");
 
@@ -119,6 +123,10 @@ export interface OrchestratorConfig {
   enableAAR: boolean;
   /** AAR configuration */
   aar?: Partial<AARConfig>;
+  /** Enable OpenClaw Gateway integration */
+  enableOpenClaw: boolean;
+  /** OpenClaw Gateway configuration */
+  openclaw?: Partial<OpenClawIntegrationConfig>;
   /** Complexity threshold for ADAPTIVE mode to escalate from BASIC to SYS6 */
   sys6ComplexityThreshold: number;
   /** Complexity threshold for ADAPTIVE mode to escalate from SYS6 to MEMBRANE */
@@ -137,6 +145,7 @@ const DEFAULT_CONFIG: OrchestratorConfig = {
   enableSys6: true,
   enableDoubleMembrane: true,
   enableAAR: true,
+  enableOpenClaw: true,
   sys6ComplexityThreshold: 0.4,
   membraneComplexityThreshold: 0.7,
 };
@@ -155,6 +164,7 @@ export class Orchestrator {
   private sys6Bridge?: Sys6OrchestratorBridge;
   private doubleMembraneIntegration?: DoubleMembraneIntegration;
   private aarSystem?: AARSystem;
+  private openclawIntegration?: OpenClawIntegration;
   private running: boolean = false;
 
   // Cognitive services for processing messages
@@ -323,6 +333,23 @@ export class Orchestrator {
         await this.aarSystem.start();
         log.info(
           "AAR (Agent-Arena-Relation) nested membrane architecture started",
+        );
+      }
+
+      // Initialize OpenClaw Gateway integration
+      if (this.config.enableOpenClaw) {
+        this.openclawIntegration = new OpenClawIntegration(
+          this.config.openclaw || {},
+          {
+            llmService: this.llmService,
+            memoryStore: this.memoryStore,
+            personaCore: this.personaCore,
+            cognitiveOrchestrator: this.cognitiveOrchestrator,
+          }
+        );
+        await this.openclawIntegration.start();
+        log.info(
+          "OpenClaw Gateway started - multi-channel AI assistant control plane active",
         );
       }
 
@@ -1038,6 +1065,11 @@ ${response.body}`;
     log.info("Stopping orchestrator services...");
 
     // Stop all services in reverse order (newest first)
+    if (this.openclawIntegration) {
+      await this.openclawIntegration.stop();
+      log.info("OpenClaw Gateway stopped");
+    }
+
     if (this.doubleMembraneIntegration) {
       await this.doubleMembraneIntegration.stop();
     }
@@ -1107,6 +1139,13 @@ ${response.body}`;
    */
   public getDove9CognitiveState(): any {
     return this.dove9Integration?.getCognitiveState() || null;
+  }
+
+  /**
+   * Get OpenClaw Gateway integration for direct access
+   */
+  public getOpenClawIntegration(): OpenClawIntegration | undefined {
+    return this.openclawIntegration;
   }
 
   /**

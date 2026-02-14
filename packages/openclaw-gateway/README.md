@@ -2,6 +2,10 @@
 
 **Multi-channel AI assistant control plane inspired by OpenClaw**
 
+> **Status: ✅ Fully Integrated**  
+> The OpenClaw Gateway is now fully integrated with the Deep Tree Echo Orchestrator!  
+> See [OPENCLAW_GATEWAY_USAGE.md](../../OPENCLAW_GATEWAY_USAGE.md) for complete documentation.
+
 The gateway provides a WebSocket-based control plane for managing AI assistant interactions across multiple messaging platforms.
 
 ## Features
