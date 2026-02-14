@@ -6,12 +6,12 @@
 import { EventEmitter } from 'events'
 import type {
   Session,
-  SessionMode,
   ChannelType,
   InboundMessage,
   ContextMessage,
   GatewayEvent,
 } from '../types/index.js'
+import { SessionMode } from '../types/index.js'
 
 export class SessionManager extends EventEmitter {
   private sessions: Map<string, Session> = new Map()
